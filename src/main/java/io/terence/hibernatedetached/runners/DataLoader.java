@@ -18,7 +18,6 @@ public class DataLoader implements ApplicationRunner {
     public void run(ApplicationArguments args) {
         //Create new Test object with a Pk
         Test test = new Test();
-        test.setPk(1L);
         test.setText("aaa");
         testRepository.save(test);
         //Create new Test object with same Pk, null version
@@ -26,14 +25,14 @@ public class DataLoader implements ApplicationRunner {
         //You will see below Exception in log
         //Detached entity with generated id '1' has an uninitialized version value 'null' :
         //uncomment below to fix exception
-        //test2.setPk(null);
+        test2.setPk(null);
         testRepository.save(test2);
         //Same as above, but just showing code with creating an object with the same pk
         Test test3 = new Test();
         test3.setPk(1L);
         test3.setText("aaa");
         //uncomment below to fix exception
-        //test3.setPk(null);
+        test3.setPk(null);
         testRepository.save(test3);
     }
 }
