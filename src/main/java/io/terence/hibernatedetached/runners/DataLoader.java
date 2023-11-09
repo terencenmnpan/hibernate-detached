@@ -25,11 +25,15 @@ public class DataLoader implements ApplicationRunner {
         Test test2 = test.cloneMe();
         //You will see below Exception in log
         //Detached entity with generated id '1' has an uninitialized version value 'null' :
+        //uncomment below to fix exception
+        //test2.setPk(null);
         testRepository.save(test2);
         //Same as above, but just showing code with creating an object with the same pk
         Test test3 = new Test();
         test3.setPk(1L);
         test3.setText("aaa");
+        //uncomment below to fix exception
+        //test3.setPk(null);
         testRepository.save(test3);
     }
 }
